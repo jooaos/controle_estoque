@@ -17,7 +17,9 @@ class ProductController extends Controller
     public function index()
     {
         $allProducts = Product::all();
-        return $allProducts;
+        return view('product.product', [
+            'products' => $allProducts
+        ]);
     }
 
     /**
@@ -104,9 +106,9 @@ class ProductController extends Controller
         try {
             $product = Product::findOrFail($id);
             $product->delete();
-            return response()->json('Produto excluído com suceso!', 200);
+            return redirect('products')->with('positive-status', 'Produto excluído com suceso!');
         } catch (Exception $e) {
-            return response()->json('Não foi possível excluir o produto, tente novamente', 400);
+            return redirect('products')->with('negative-status', 'Não foi possível excluir o produto, tente novamente!');
         }
     }
 }
