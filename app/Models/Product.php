@@ -10,6 +10,6 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'sku', 'quantity', 'addBy'
+        'name', 'sku', 'quantity', 'addBy', 'removeBy'
     ];
 }

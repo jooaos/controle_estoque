@@ -19,6 +19,7 @@ class CreateProdutosTable extends Migration
             $table->string('sku')->unique();
             $table->integer('quantity');
             $table->string('addBy');
+            $table->string('removeBy')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

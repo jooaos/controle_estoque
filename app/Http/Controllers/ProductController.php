@@ -110,6 +110,8 @@ class ProductController extends Controller
     {
         try {
             $product = Product::findOrFail($id);
+            $product->removeBy = 'sistema';
+            $product->save();
             $product->delete();
             return redirect('products')->with('positive-status', 'Produto excluído com suceso!');
         } catch (Exception $e) {
