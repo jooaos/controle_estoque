@@ -5,6 +5,8 @@ Olá, tudo bem? Bom, para rodar está aplicação em *localhost* você deverá s
 Na sua máquina você terá que ter:
  - [PHP] (>= 7.4)
  - [MySQL] (>=5.7)
+ - [Composer] (>=2.1.6)
+ - [Node] (>=14.0)
 
 ### Instalando
 ```sh
@@ -30,3 +32,5 @@ usuario@exemplo.com | password
 [//]: #
    [PHP]: <https://www.php.net/>
    [MySQL]: <https://www.mysql.com/>
+   [Composer]: <https://getcomposer.org/>
+   [Node]: <https://nodejs.org/en/>
