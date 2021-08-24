@@ -1,4 +1,4 @@
-# Site Contro de Estoque
+# Site - Controle de Estoque
 Olá, tudo bem? Bom, para rodar está aplicação em *localhost* você deverá seguir os passos abaixo.
 
 ### Dependências
