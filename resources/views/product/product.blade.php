@@ -24,7 +24,7 @@
         @endif
         @if (session('negative-status'))
             <div class="alert alert-danger">
-                {{ session('negatice-status') }}
+                {{ session('negative-status') }}
             </div>
         @endif
         <table class="table table-dark table-striped mt-2">
@@ -45,9 +45,10 @@
                         <td class="col-2">{{ $product->quantity }}</td>
                         <td class="col-2">{{ $product->addBy }}</td>
                         <td class="col-4">
-                            <button type="button" class="btn btn-secondary text-white ml-5">
+                            <a href="{{ route('products.iventory', $product->id) }}" type="button"
+                                class="btn btn-secondary text-white ml-5">
                                 Atualizar Estoque
-                            </button>
+                            </a>
                             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary text-white ml-5">
                                 Editar Produto
                             </a>
@@ -61,7 +62,6 @@
                 @endforeach
             </tbody>
         </table>
-
     </section>
 
 @endsection
