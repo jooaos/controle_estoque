@@ -12,6 +12,9 @@
                 </p>
             </div>
             <div>
+                <a href="{{ route('report.index') }}" class="btn btn-warning text-white ml-5">
+                    Relatório
+                </a>
                 <a href="{{ route('products.create') }}" class="btn btn-info text-white ml-5">
                     Adicionar Produto
                 </a>
