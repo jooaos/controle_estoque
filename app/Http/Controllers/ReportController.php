@@ -9,6 +9,8 @@ class ReportController extends Controller
 {
     public function index()
     {
+        $date = new DateTime();
+        $today = $date->format('d/m/Y');
         $productsWithLittleUnits = $this->productWithQuantityLessThan100();
         $productsCreated = $this->productThatWasCreatedToday();
         $productsDeleted = $this->productThatWasDeletedToday();
@@ -17,6 +19,7 @@ class ReportController extends Controller
         $productsAddedByAPI = $this->productTharWasAddedBy('api');
         $productsDeletedByAPI = $this->productTharWasRemovedBy('api');
         return view('report.report', [
+            'today' => $today,
             'productsWithLittleUnits' => $productsWithLittleUnits,
             'productsCreated' => $productsCreated,
             'productsDeleted' => $productsDeleted,

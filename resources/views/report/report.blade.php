@@ -8,7 +8,8 @@
             <div>
                 <h3 class="mt-4">Relatório InvtControl</h3>
                 <p class="lead">
-                    - Acompanhe aqui os principais indicadores da organização
+                    - Acompanhe aqui os principais indicadores da organização. <strong>Data Consultada:
+                        {{ $today }}</strong>
                 </p>
             </div>
             <div>
@@ -23,8 +24,8 @@
     <section>
         <hr>
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <h5>Quantidade de Produtos cadastrados</h5>
-            <h4 class="bg-info text-white p-2 rounded">{{ $productsCreated->count() }}</h4>
+            <h5 class="text-uppercase fw-bold">Quantidade de Produtos cadastrados</h5>
+            <h4 class="bg-primary text-white p-2 rounded">{{ $productsCreated->count() }}</h4>
         </div>
         <div class="ml-3">
             <ul>
@@ -54,8 +55,8 @@
         </div>
         <hr>
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <h5>Quantidade de Produtos deletados</h5>
-            <h4 class="bg-info text-white p-2 rounded">{{ $productsDeleted->count() }}</h4>
+            <h5 class="text-uppercase fw-bold">Quantidade de Produtos deletados</h5>
+            <h4 class="bg-primary text-white p-2 rounded">{{ $productsDeleted->count() }}</h4>
         </div>
         <div class="ml-3">
             <ul>
@@ -85,8 +86,8 @@
         </div>
         <hr>
         <div class="d-flex justify-content-between align-items-center mt-3">
-            <h5>Produtos que estão com baixo estoque</h5>
-            <h4 class="bg-info text-white p-2 rounded">{{ $productsWithLittleUnits->count() }}</h4>
+            <h5 class="text-uppercase fw-bold">Produtos que estão com baixo estoque</h5>
+            <h4 class="bg-primary text-white p-2 rounded">{{ $productsWithLittleUnits->count() }}</h4>
         </div>
         <div class="ml-3">
             <table class="table table-dark table-striped mt-2">
@@ -95,7 +96,6 @@
                         <th class="col-2">SKU</th>
                         <th class="col-2">Nome</th>
                         <th class="col-2">Quantidade</th>
-                        <th class="col-2 text-center">Removido Via</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -104,7 +104,6 @@
                             <td class="col-2">{{ $product->sku }}</td>
                             <td class="col-2">{{ $product->name }}</td>
                             <td class="col-2">{{ $product->quantity }}</td>
-                            <td class="col-2 text-uppercase text-center">{{ $product->removeBy }}</td>
                         </tr>
                     @endforeach
                 </tbody>
