@@ -48,9 +48,9 @@
                             <button type="button" class="btn btn-secondary text-white ml-5">
                                 Atualizar Estoque
                             </button>
-                            <button type="button" class="btn btn-primary text-white ml-5">
+                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary text-white ml-5">
                                 Editar Produto
-                            </button>
+                            </a>
                             <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

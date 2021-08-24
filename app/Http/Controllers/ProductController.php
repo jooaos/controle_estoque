@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
@@ -57,14 +58,6 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        try {
-            $product = Product::findOrfail($id);
-            return view('product.product-add', [
-                'product' => $product
-            ]);
-        } catch (Exception $e) {
-            return redirect('products')->with('negative-status', 'Recarregue a página e tente novamente!');
-        }
     }
 
     /**
@@ -77,9 +70,11 @@ class ProductController extends Controller
     {
         try {
             $product = Product::findOrFail($id);
-            return $product;
+            return view('product.product-update', [
+                'product' => $product
+            ]);
         } catch (Exception $e) {
-            return response()->json('O produto não foi encontrado!', 404);
+            return redirect('products')->with('negative-status', 'O produto não foi encontrado! Tente novamente.');
         }
     }
 
@@ -90,16 +85,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         try {
             $product = Product::findOrFail($id);
             $product->name = $request->name;
             $product->quantity = $request->quantity;
             $product->save();
-            return response()->json('Produto editado com sucesso!', 200);
+            return redirect('products')->with('positive-status', 'Produto editado com sucesso!');
         } catch (Exception $e) {
-            return response()->json('Não foi possível atualizar o produto, tente novamente', 400);
+            return redirect('products')->with('negative-status', 'Não foi possível atualizar o produto!');
         }
     }
 
