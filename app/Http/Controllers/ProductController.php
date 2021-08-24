@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Http\Requests\UpdateQuantityProductRequest;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
@@ -44,7 +45,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\StoreProductRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreProductRequest $request)
@@ -89,7 +90,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UpdateProductRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -125,6 +126,12 @@ class ProductController extends Controller
         }
     }
 
+    /**
+     * Metódo para visualizar a página de edição de estoque
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
     public function viewEditInventory($id)
     {
         try {
@@ -137,7 +144,14 @@ class ProductController extends Controller
         }
     }
 
-    public function editInventory(Request $request, $id)
+    /**
+     * Metódo para editar a quantidade de produto em estoque
+     *
+     * @param  App\Http\Requests\UpdateQuantityProductRequest  $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function editInventory(UpdateQuantityProductRequest $request, $id)
     {
         try {
             $product = Product::findOrFail($id);

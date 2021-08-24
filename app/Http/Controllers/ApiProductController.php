@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class ApiProductController extends Controller
 {
+    /**
+     * Método para criar um produto através da API
+     * @param  App\Http\Requests\StoreProductRequest  $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function storeProduct(StoreProductRequest $request)
     {
         $product = new Product;
@@ -21,6 +27,12 @@ class ApiProductController extends Controller
         return response()->json('O produto foi cadastrado com sucesso', 200);
     }
 
+    /**
+     * Metodo para atualizar a quantidade de estoque de um determinado produto
+     * @param  App\Http\Requests\UpdateQuantityProductRequest  $request
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function updateQuantity(UpdateQuantityProductRequest $request, $id)
     {
         try {
