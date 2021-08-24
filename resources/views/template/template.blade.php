@@ -15,7 +15,15 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand fw-bolder fs-3" href="#">InvtControl</a>
+            <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
         </div>
+
     </nav>
     <div class="container">
         @yield('content')
