@@ -29,7 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.product-add');
     }
 
     /**
@@ -46,7 +46,7 @@ class ProductController extends Controller
         $product->quantity = $request->quantity;
         $product->addBy = 'sistema';
         $product->save();
-        return response()->json('O produto foi criado com sucesso!', 200);
+        return redirect('products')->with('positive-status', 'O produto foi criado com sucesso!');
     }
 
     /**
@@ -57,6 +57,14 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        try {
+            $product = Product::findOrfail($id);
+            return view('product.product-add', [
+                'product' => $product
+            ]);
+        } catch (Exception $e) {
+            return redirect('products')->with('negative-status', 'Recarregue a página e tente novamente!');
+        }
     }
 
     /**

@@ -4,10 +4,19 @@
 
 @section('content')
     <section>
-        <h3 class="mt-4">Produtos</h3>
-        <p class="lead">
-            - Aqui você encontra todos os produtos que estão cadastrados em seu sistema
-        </p>
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h3 class="mt-4">Produtos</h3>
+                <p class="lead">
+                    - Aqui você encontra todos os produtos que estão cadastrados em seu sistema
+                </p>
+            </div>
+            <div>
+                <a href="{{ route('products.create') }}" class="btn btn-info text-white ml-5">
+                    Adicionar Produto
+                </a>
+            </div>
+        </div>
         @if (session('positive-status'))
             <div class="alert alert-success">
                 {{ session('positive-status') }}
@@ -36,8 +45,12 @@
                         <td class="col-2">{{ $product->quantity }}</td>
                         <td class="col-2">{{ $product->addBy }}</td>
                         <td class="col-4">
-                            <button type="button" class="btn btn-secondary text-white ml-5">Atualizar Estoque</button>
-                            <button type="button" class="btn btn-primary text-white ml-5">Editar Produto</button>
+                            <button type="button" class="btn btn-secondary text-white ml-5">
+                                Atualizar Estoque
+                            </button>
+                            <button type="button" class="btn btn-primary text-white ml-5">
+                                Editar Produto
+                            </button>
                             <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
